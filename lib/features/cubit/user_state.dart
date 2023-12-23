@@ -1,4 +1,4 @@
-part of 'user_bloc.dart';
+part of 'user_cubit.dart';
 
 enum ApiStatus { notInitiated, loading, success, error }
 

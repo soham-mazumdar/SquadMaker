@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:squad_maker/app/di/di.dart';
 import 'package:squad_maker/components/app_snackbar.dart';
 import 'package:squad_maker/components/user_card.dart';
-import 'package:squad_maker/features/bloc/user_bloc.dart';
+import 'package:squad_maker/features/cubit/user_cubit.dart';
 import 'package:squad_maker/src/data/data.dart';
 
 class UserListingWidget extends StatelessWidget {
@@ -28,7 +28,7 @@ class UserListingWidget extends StatelessWidget {
         backgroundCardScale: 0.83,
         // isDisabled: myTeam.length >= 3,
         onEnd: () {
-          getItInstance<UserBloc>().add(const GetUsers());
+          getItInstance<UserCubit>().getUsers(count: 10);
         },
         onSwipeEnd: (
           int previousIndex,
@@ -37,9 +37,8 @@ class UserListingWidget extends StatelessWidget {
         ) {
           if (activity.direction == AxisDirection.right) {
             if (myTeam.length < 3) {
-              getItInstance<UserBloc>().add(AddToTeam(
-                userModel: users[targetIndex - 1],
-              ));
+              getItInstance<UserCubit>()
+                  .addToTeam(userModel: users[targetIndex - 1]);
               // AppSnackbar(context).show('Added to team', context);
             } else {
               AppSnackbar(context).show(

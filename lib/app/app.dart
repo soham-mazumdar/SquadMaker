@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:squad_maker/app/di/di.dart';
 import 'package:squad_maker/app/router/app_router.dart';
-import 'package:squad_maker/features/bloc/user_bloc.dart';
+import 'package:squad_maker/features/cubit/user_cubit.dart';
 import 'package:squad_maker/features/home/view/home_screen.dart';
 
 class App extends StatelessWidget {
@@ -13,7 +13,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<UserBloc>(create: (context) => getItInstance<UserBloc>()),
+        BlocProvider<UserCubit>(
+            create: (context) => getItInstance<UserCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -3,7 +3,7 @@ import 'package:squad_maker/app/di/di.dart';
 import 'package:squad_maker/app/router/app_routes.dart';
 import 'package:squad_maker/components/my_team_chip.dart';
 import 'package:squad_maker/components/row_builder.dart';
-import 'package:squad_maker/features/bloc/user_bloc.dart';
+import 'package:squad_maker/features/cubit/user_cubit.dart';
 import 'package:squad_maker/src/data/data.dart';
 
 class MyTeamListing extends StatelessWidget {
@@ -31,10 +31,10 @@ class MyTeamListing extends StatelessWidget {
         return MyTeamChip(
           user: user,
           onTap: () {
-            getItInstance<UserBloc>().add(SelecteUser(userModel: user));
+            getItInstance<UserCubit>().selecteUser(userModel: user);
           },
           onClose: () {
-            getItInstance<UserBloc>().add(RemoveFromTeam(userModel: user));
+            getItInstance<UserCubit>().removeFromTeam(userModel: user);
           },
         );
       },

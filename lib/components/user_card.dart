@@ -52,6 +52,7 @@ class UserCard extends StatelessWidget {
           Text(
             user.name!,
             style: AppTextStyle.lgSB,
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 10),
           Text(

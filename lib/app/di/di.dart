@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
-import 'package:squad_maker/features/bloc/user_bloc.dart';
+import 'package:squad_maker/features/cubit/user_cubit.dart';
 import 'package:squad_maker/src/core/core.dart';
 import 'package:squad_maker/src/data/data.dart';
 import 'package:squad_maker/src/domain/domain.dart';
@@ -20,5 +20,5 @@ init() async {
 
   // GLOBAL BLOCS
   getItInstance
-      .registerLazySingleton<UserBloc>(() => UserBloc(getItInstance()));
+      .registerLazySingleton<UserCubit>(() => UserCubit(getItInstance()));
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:squad_maker/app/di/di.dart';
 import 'package:squad_maker/components/user_card.dart';
-import 'package:squad_maker/features/bloc/user_bloc.dart';
+import 'package:squad_maker/features/cubit/user_cubit.dart';
 import 'package:squad_maker/theme/theme.dart';
 
 class MyTeamScreen extends StatelessWidget {
@@ -10,8 +10,8 @@ class MyTeamScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(
-      bloc: getItInstance<UserBloc>(),
+    return BlocBuilder<UserCubit, UserState>(
+      bloc: getItInstance<UserCubit>(),
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -29,7 +29,7 @@ class MyTeamScreen extends StatelessWidget {
             centerTitle: true,
             title: Text(
               'My Team',
-              style: AppTextStyle.lgSB,
+              style: AppTextStyle.lgSB.copyWith(color: AppColors.white),
             ),
           ),
           body: state.myTeam.isEmpty

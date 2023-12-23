@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:squad_maker/app/di/di.dart';
-import 'package:squad_maker/features/bloc/user_bloc.dart';
+import 'package:squad_maker/features/cubit/user_cubit.dart';
 import 'package:squad_maker/features/home/widgets/limit_notice_widget.dart';
 import 'package:squad_maker/features/home/widgets/my_team_listing.dart';
 import 'package:squad_maker/features/home/widgets/selected_user_widget.dart';
@@ -13,8 +13,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserBloc, UserState>(
-      bloc: getItInstance<UserBloc>()..add(const GetUsers()),
+    return BlocBuilder<UserCubit, UserState>(
+      bloc: getItInstance<UserCubit>()..getUsers(count: 10),
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.bg,
